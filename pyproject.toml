@@ -10,6 +10,7 @@ packages = [{include = "sedos_pipeline"}]
 python = "^3.9"
 doit = "^0.36.0"
 SPARQLWrapper = "^2.0.0"
+requests = "^2.28.1"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.8.0"

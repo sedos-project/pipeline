@@ -1,3 +1,8 @@
+import json
+import urllib.parse
+from typing import List
+
+import requests
 from SPARQLWrapper import JSON, SPARQLWrapper2
 
 DATABUS_ENDPOINT = "https://energy.databus.dbpedia.org/sparql"
@@ -40,3 +45,33 @@ def get_latest_version_of_artifact(artifact: str) -> str:
     )
     result = sparql.query()
     return result.bindings[0]["version"].value
+
+
+def get_artifacts_from_collection(collection: str) -> List[str]:
+    """
+    Returns list of all artifacts found in given collection
+
+    Parameters
+    ----------
+    collection: str
+        URL to databus collection
+
+    Returns
+    -------
+    List[str]
+        List of artifacts in collection
+    """
+
+    def find_artifact(node):
+        if len(node["childNodes"]) == 0:
+            yield node["uri"]
+        for child in node["childNodes"]:
+            yield from find_artifact(child)
+
+    response = requests.get(
+        collection, headers={"Content-Type": "text/sparql"}, timeout=90
+    )
+    data = response.json()
+    content_raw = urllib.parse.unquote(data["@graph"][0]["content"])
+    content = json.loads(content_raw)
+    return list(find_artifact(content["root"]))
