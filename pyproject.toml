@@ -8,6 +8,8 @@ packages = [{include = "sedos_pipeline"}]
 
 [tool.poetry.dependencies]
 python = "^3.9"
+doit = "^0.36.0"
+SPARQLWrapper = "^2.0.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.8.0"
