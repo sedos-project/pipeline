@@ -11,6 +11,21 @@ DATABUS_ENDPOINT = "https://energy.databus.dbpedia.org/sparql"
 
 
 def download_artifact(artifact_file: str, filename: Union[pathlib.Path, str]):
+    """
+    Downloads a CSV artifact and stores it at given filename
+
+    Parameters
+    ----------
+    artifact_file: str
+        URI to artifact file
+    filename: str
+        Path to store downladed file
+
+    Raises
+    ------
+    NotImplementedError
+        If artifact file is not a CSV file
+    """
     if not artifact_file.endswith(".csv"):
         raise NotImplementedError("Currently only CSV artifacts can be downloaded.")
     with open(os.path.join(filename), "wb") as f, requests.get(
