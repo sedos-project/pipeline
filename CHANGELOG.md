@@ -19,12 +19,9 @@ Here is a template for new release sections
 ## [Unreleased]
 
 ### Added
-- one thing
 
 ### Changed
-- another thing
 
 ### Removed
-- yet another thing
 
 

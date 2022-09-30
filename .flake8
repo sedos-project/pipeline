@@ -1,3 +1,5 @@
 [flake8]
-exclude = meta/migrations/, docs/
-max-line-length=100
+ignore = E226,E302,E41,B008
+max-line-length = 160
+exclude = tests/*
+max-complexity = 10
