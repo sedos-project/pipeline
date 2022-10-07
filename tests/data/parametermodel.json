@@ -1,0 +1,204 @@
+{
+  "@context": null,
+  "@id": null,
+  "_comment": {
+    "dates": "Dates and time must follow the ISO8601 including time zone (YYYY-MM-DD or YYYY-MM-DDThh:mm:ss\u00b1hh)",
+    "languages": "Languages must follow the IETF (BCP47) format (en-GB, en-US, de-DE)",
+    "licenses": "License name must follow the SPDX License List (https://spdx.org/licenses/)",
+    "metadata": "Metadata documentation and explanation (https://github.com/OpenEnergyPlatform/oemetadata)",
+    "null": "If not applicable use: null",
+    "review": "Following the OEP Data Review (https://github.com/OpenEnergyPlatform/data-preprocessing/blob/master/data-review/manual/review_manual.md)",
+    "todo": "If a value is not yet available, use: todo",
+    "units": "Use a space between numbers and units (100 m)"
+  },
+  "context": {
+    "contact": null,
+    "documentation": "https://sedos-project.github.io/.github/",
+    "fundingAgency": null,
+    "fundingAgencyLogo": null,
+    "grantNo": null,
+    "homepage": "https://sedos-project.github.io/.github/",
+    "publisherLogo": null,
+    "sourceCode": "https://github.com/sedos-project/oedatamodel/tree/main/extended_datamodel"
+  },
+  "contributors": [
+    {
+      "comment": "Create template datapackage for extended datamodel",
+      "date": "2022-07-13",
+      "email": null,
+      "object": "datapackage",
+      "title": "henhuy"
+    }
+  ],
+  "description": "datamodel, metadata and examples provided as datapackage",
+  "id": null,
+  "keywords": [
+    "datamodel",
+    "datapackage",
+    "general energy dataformat"
+  ],
+  "language": [
+    "en-GB"
+  ],
+  "licenses": [],
+  "metaMetadata": {
+    "metadataLicense": {
+      "name": "CC0-1.0",
+      "path": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "title": "Creative Commons Zero v1.0 Universal"
+    },
+    "metadataVersion": "oemetadata_v1.5.1"
+  },
+  "name": "Parameter Datamodel",
+  "publicationDate": "2022-07-13",
+  "resources": [
+    {
+      "dialect": {
+        "decimalSeparator": ".",
+        "delimiter": ";"
+      },
+      "encoding": "UTF-8",
+      "format": "PostgreSQL",
+      "name": "model_draft.sedos_extended_scalars",
+      "path": "https://openenergy-platform.org/dataedit/view/model_draft/sedos_extended_scalars",
+      "profile": "tabular-data-resource",
+      "schema": {
+        "fields": [
+          {
+            "description": "Unique identifier",
+            "isAbout": [],
+            "name": "id",
+            "type": "bigint",
+            "unit": null,
+            "valueReference": []
+          },
+          {
+            "description": "Country or regionx",
+            "isAbout": [],
+            "name": "region",
+            "type": "text",
+            "unit": null,
+            "valueReference": []
+          },
+          {
+            "description": "Year",
+            "isAbout": [],
+            "name": "year",
+            "type": "integer",
+            "unit": "a",
+            "valueReference": []
+          },
+          {
+            "description": "Parameter #1",
+            "isAbout": [
+              {
+                "name": "efficiency value",
+                "path": "http://openenergy-platform.org/ontology/oeo/OEO_00140050"
+              }
+            ],
+            "name": "efficiency",
+            "type": "float",
+            "unit": null,
+            "valueReference": []
+          },
+          {
+            "description": "Parameter #2",
+            "isAbout": [],
+            "name": "hub_height",
+            "type": "float",
+            "unit": null,
+            "valueReference": []
+          },
+          {
+            "description": "Parameter #3",
+            "isAbout": [],
+            "name": "capacity_cost",
+            "type": "float",
+            "unit": null,
+            "valueReference": []
+          },
+          {
+            "description": "Bandwidth Type",
+            "isAbout": [],
+            "name": "bandwidth_type",
+            "type": "json",
+            "unit": null,
+            "valueReference": []
+          },
+          {
+            "description": "Method",
+            "isAbout": [],
+            "name": "method",
+            "type": "json",
+            "unit": null,
+            "valueReference": []
+          },
+          {
+            "description": "Source",
+            "isAbout": [],
+            "name": "source",
+            "type": "json",
+            "unit": null,
+            "valueReference": []
+          },
+          {
+            "description": "Version",
+            "isAbout": [],
+            "name": "version",
+            "type": "text",
+            "unit": null,
+            "valueReference": []
+          },
+          {
+            "description": "Comment",
+            "isAbout": [],
+            "name": "comment",
+            "type": "text",
+            "unit": null,
+            "valueReference": []
+          }
+        ],
+        "foreignKeys": [],
+        "primaryKey": [
+          "id"
+        ]
+      }
+    }
+  ],
+  "review": {
+    "badge": null,
+    "path": null
+  },
+  "sources": [
+    {
+      "description": "Extended data model for secondary input scalars",
+      "licenses": [
+        {
+          "attribution": "\u00a9 Reiner Lemoine Institut",
+          "instruction": "You are free: To Share, To Create, To Adapt",
+          "name": "CC0-1.0",
+          "path": "https://creativecommons.org/publicdomain/zero/1.0/legalcode",
+          "title": "Creative Commons Zero v1.0 Universal"
+        }
+      ],
+      "path": "https://github.com/sedos-project/oedatamodel/tree/main/extended_datamodel",
+      "title": "Extended datamodel"
+    }
+  ],
+  "spatial": {
+    "extent": null,
+    "location": null,
+    "resolution": null
+  },
+  "subject": [
+    {
+      "name": "onshore wind farm",
+      "path": "http://openenergy-platform.org/ontology/oeo/OEO_00000311"
+    }
+  ],
+  "temporal": {
+    "referenceDate": null,
+    "timeseries": []
+  },
+  "title": "SEDOS datamodel for secondary input scalars"
+}
