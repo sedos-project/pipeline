@@ -276,6 +276,7 @@ class OEDatamodelFromParametermodel:
         self.__init_parameters()
 
     def __init_parameters(self):
+        """Initializes global parameters"""
         with open(
             self.parametermodel_filename, "r", encoding="utf-8"
         ) as parametermodel_file:
@@ -307,7 +308,47 @@ class OEDatamodelFromParametermodel:
         )
 
     def __convert_row(self, row: dict, parameter: str) -> dict:
-        def read_json_column(json_entry):
+        """
+        Converts one row from ParameterModel into OEDatamodel
+
+        Parameters
+        ----------
+        row: dict
+            Current row from ParameterModel
+        parameter: str
+            As each row in ParameterModel may contain multiple parameters,
+            each parameter is mapped to a row in OEDatamodel
+
+        Returns
+        -------
+        dict
+            Row in OEDatamodel format
+
+        Raises
+        ------
+        ParameterModelError
+            if column cannot be found in ParameterModel
+        """
+
+        def read_json_cell(json_entry: str) -> str:
+            """
+            Reads a cell from ParameterModel and tries to extract information for current parameter
+
+            Parameters
+            ----------
+            json_entry: str
+                Cell from ParameterModel containing a JSON-string
+
+            Returns
+            -------
+            str
+                Output for current cell for given parameter
+
+            Raises
+            ------
+            ParameterModelError
+                if JSON is corrupt or parameter cannot be found in JSON-keys
+            """
             try:
                 entry_dict = json.loads(json_entry)
             except json.decoder.JSONDecodeError as de:
@@ -337,10 +378,13 @@ class OEDatamodelFromParametermodel:
             except KeyError:
                 # pylint: disable=W0707
                 raise ParameterModelError(f"Parameter model needs {column:=}.")
-            oedatamodel_row[column] = read_json_column(entry) if "{" in entry else entry
+            oedatamodel_row[column] = read_json_cell(entry) if "{" in entry else entry
         return oedatamodel_row
 
     def convert(self):
+        """
+        Converts ParameterModel from given file into OEDatamodel and saves it as CSV
+        """
         with open(
             self.parametermodel_filename, "r", encoding="utf-8"
         ) as parametermodel_file, open(
